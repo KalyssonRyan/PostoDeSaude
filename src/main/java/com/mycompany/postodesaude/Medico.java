@@ -27,6 +27,25 @@ public class Medico extends Pessoa{
      public String getCrm(){
          return crm;
      }
+      public void encaminharParaTratamento() {
+      
+    }
+
+    public void encaminharParaMedicamento() {
+        // Lógica para encaminhar para medicamento
+    }
+
+    public void realizarDiagnostico() {
+        // Lógica para realizar diagnóstico
+    }
+
+    public void solicitarExame() {
+        // Lógica para solicitar exame
+    }
+
+    public void prescreverReceita() {
+        // Lógica para prescrever receita
+    }
 
      //public void emcaminharParaTratamento()
 }

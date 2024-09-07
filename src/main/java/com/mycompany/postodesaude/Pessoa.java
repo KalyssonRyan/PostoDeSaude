@@ -14,37 +14,36 @@ public abstract class Pessoa {
     private int idade;
     private String telefone;
 
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
 
-    public void setCpf(String cpf){
-        this.cpf = cpf;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getCpf(){
+    public String getCpf() {
         return cpf;
     }
 
-    public void setIdade(int idade){
-        this.idade = idade;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public int getIdade(){
+    public int getIdade() {
         return idade;
     }
 
-    public void setTelefone(String telefone){
-        this.telefone = telefone;
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
-    public String getTelefone(){
+    public String getTelefone() {
         return telefone;
     }
 
-
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 }
+

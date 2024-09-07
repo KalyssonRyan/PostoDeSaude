@@ -18,6 +18,25 @@ public class Secretario extends Pessoa{
     public String getTurno(){
         return turno;
     }
+    public void verificarDocumentos(Paciente paciente) {
+        // Lógica para verificar documentos
+    }
+
+    public void cancelaAgendamento(Paciente paciente) {
+        // Lógica para cancelar agendamento
+    }
+
+    public void verificarDisponibilidadeDosMedicos() {
+        // Lógica para verificar disponibilidade dos médicos
+    }
+
+    public void agendarConsulta() {
+        // Lógica para agendar consulta
+    }
+
+    public void cadastrarDocumentos() {
+        // Lógica para cadastrar documentos
+    }
 
 
 }
