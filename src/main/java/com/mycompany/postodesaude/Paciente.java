@@ -8,8 +8,10 @@ package com.mycompany.postodesaude;
  *
  * @author Kalysson @author Ruan
  */
+
+
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class Paciente extends Pessoa{
     private String numeroSus;
@@ -26,7 +28,7 @@ public class Paciente extends Pessoa{
     //Esse método vai retornar um objeto consulta.
     public Consulta solicitaConsulta(Medico medico, Paciente paciente, String data, String hora){
         Consulta consulta = new Consulta(data, hora, medico, this);
-        system.out.println("Consulta solicitada com o médico:"+medico+"\n"+"Para o dia:"+data+"\n"+"No horario de:"+hora+"\n");
+        System.out.println("Consulta solicitada com o médico:"+medico+"\n"+"Para o dia:"+data+"\n"+"No horario de:"+hora+"\n");
         return consulta;
     }  
 
