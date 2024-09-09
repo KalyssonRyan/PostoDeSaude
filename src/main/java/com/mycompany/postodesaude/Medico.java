@@ -27,8 +27,8 @@ public class Medico extends Pessoa{
      public String getCrm(){
          return crm;
      }
-      public void encaminharParaTratamento() {
-      
+      public void encaminharParaTratamento(Paciente paciente) {
+             System.out.println("Encaminhando paciente com prontuário " + paciente.getProntuario() + " para tratamento.");
     }
 
     public void encaminharParaMedicamento() {
