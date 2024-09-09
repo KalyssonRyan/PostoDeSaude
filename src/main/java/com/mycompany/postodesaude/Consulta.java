@@ -23,7 +23,7 @@ public class Consulta {
     //setando o paciente da consulta
     private Paciente paciente;
 
-    public Consulta(Date data, Time hora, Medico medico, Paciente paciente){
+    public Consulta(String data, String hora, Medico medico, Paciente paciente){
 
         this.data = data;
         this.hora = hora;
