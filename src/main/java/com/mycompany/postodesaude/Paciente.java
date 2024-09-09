@@ -44,6 +44,8 @@ public class Paciente extends Pessoa{
         System.out.println("medicação tomada com enfermeiro.");
     }
 
+    
+
     public void setNumeroSus(String numeroSus) {
         this.numeroSus = numeroSus;
     }
