@@ -16,8 +16,8 @@ import java.util.Date;
 public class Consulta {
 
 
-    private Date data;
-    private Time hora;
+    private String data;
+    private String hora;
     //setando o medico da consulta
     private Medico medico;
     //setando o paciente da consulta
@@ -31,19 +31,19 @@ public class Consulta {
         this.paciente = paciente;
     }
 
-    public void setData(Date data){
+    public void setData(String data){
         this.data = data;
     }
 
-    public String getData(Date data){
+    public String getData(){
         return data;
     }
 
-    public void setHora(Time hora){
+    public void setHora(String hora){
         this.hora = hora;
     }
 
-    public Time getHora(){
+    public String getHora(){
         return hora;
     }
 
@@ -57,6 +57,10 @@ public class Consulta {
 
     public void setPaciente(Paciente paciente){
         this.paciente = paciente;
+    }
+
+    public Paciente getPaciente(){
+        return paciente;
     }
 
 
