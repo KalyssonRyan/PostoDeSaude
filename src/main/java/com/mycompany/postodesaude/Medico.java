@@ -31,8 +31,9 @@ public class Medico extends Pessoa{
              System.out.println("Encaminhando paciente com prontuário " + paciente.getProntuario() + " para tratamento.");
     }
 
-    public void encaminharParaMedicamento() {
-        // Lógica para encaminhar para medicamento
+      public void encaminharParaMedicamento(Paciente paciente, Medicamento medicamento) {
+        Farmaceutico farmaceutico = new Farmaceutico(); 
+        farmaceutico.forneceMedicamentos(paciente, medicamento);
     }
 
     public void realizarDiagnostico() {
