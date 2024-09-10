@@ -46,8 +46,7 @@ public class PostoDeSaude {
             System.out.println("2 - Agendar consulta");
             System.out.println("3 - Cancelar consulta");
             System.out.println("-------Medico-------");
-            System.out.println("4 - encaminhar para tratamento");
-            System.out.println("5 - Realizer Dignostico");
+            System.out.println("5 - Realizer Dignostico da consulta");
             System.out.println("6 - Solicitar Exame");
             System.out.println("7 - Prescrever Receita");
             System.out.println("8 - Encaminhar para exame");
@@ -128,26 +127,7 @@ public class PostoDeSaude {
                     }
                     break;
 
-
-                case 4:
-                   
-
-                    // Encaminhar para tratamento
-                    System.out.print("Digite o número do SUS do paciente para encaminhar para tratamento: ");
-                    String pacienteNumero = scanner.nextLine();
-                    Paciente pacienteTratamento = encontrarPacientePorNumeroSus(pacienteNumero);
-                    if (pacienteTratamento != null) {
-                        Medico medicoTratamento = encontrarMedicoPorNome("Dr. João"); // Usando nome fixo para exemplo
-                        if (medicoTratamento != null) {
-                            medicoTratamento.encaminharParaTratamento(pacienteTratamento);
-                        } else {
-                            System.out.println("Médico não encontrado para encaminhamento.");
-                        }
-                    } else {
-                        System.out.println("Paciente não encontrado para encaminhamento.");
-                    }
-                    break;
-                 case 5:
+                 case 4:
                     System.out.println("Realizando diagnóstico");
                     System.out.print("Digite o Numero do SUS do Paciente para o diagnóstico: ");
                     String pacienteSus = scanner.nextLine();
