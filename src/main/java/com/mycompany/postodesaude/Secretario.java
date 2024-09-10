@@ -4,6 +4,8 @@
  */
 package com.mycompany.postodesaude;
 
+import static com.mycompany.postodesaude.PostoDeSaude.pacientes;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /**
@@ -74,7 +76,27 @@ public class Secretario extends Pessoa{
             System.out.println("Consulta agendada com sucesso.");
         }
     public void cadastrarDocumentos() {
-        // Lógica para cadastrar documentos
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o Nome do paciente: ");
+        String nomePaciente = scanner.nextLine();
+        System.out.print("Digite o número do SUS do paciente: ");
+        String numeroSus = scanner.nextLine();
+        System.out.print("Digite o prontuário do paciente: ");
+        String prontuario = scanner.nextLine();
+        System.out.print("Digite a data de cadastro do paciente (yyyy-mm-dd): ");
+        String dataCadastroStr = scanner.nextLine();
+
+        // Converter a data de cadastro para LocalDate
+        LocalDate dataCadastro = LocalDate.parse(dataCadastroStr);
+
+        // Criar um novo objeto Paciente
+        Paciente paciente = new Paciente(numeroSus, prontuario, dataCadastro,nomePaciente);
+
+        // Adicionar o paciente à lista de pacientes
+        PostoDeSaude.adicionarPaciente(paciente);
+
+        // Confirmar adição
+        System.out.println("Paciente adicionado com sucesso!");
     }
 
 

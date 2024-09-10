@@ -66,7 +66,7 @@ public class Medico extends Pessoa{
                 solicitarExame(paciente);
              }
             case 3->{
-                
+                prescreverReceita(paciente);
             }
             default -> System.out.println("Opção inválida.");
         }

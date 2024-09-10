@@ -14,15 +14,19 @@ import java.time.LocalDate;
 
 
 public class Paciente extends Pessoa{
+
+    public Paciente(String string, String string1, LocalDate now, String maria_Oliveira) {
+        this.numeroSus = numeroSus;
+        this.prontuario = prontuario;
+        this.dataCadastro = dataCadastro;
+        
+    }
     private String numeroSus;
     private String prontuario;
     private LocalDate dataCadastro;
 
-    public Paciente(String numeroSus, String prontuario, LocalDate dataCadastro, String nomePaciente){
-        this.numeroSus = numeroSus;
-        this.prontuario = prontuario;
-        this.dataCadastro = dataCadastro;
-    }
+    
+
 
     //O paciente vai solicitar uma consulta aqui, para isso devemos colocar objetos e dados no parâmetro.
     //Esse método vai retornar um objeto consulta.
@@ -71,5 +75,6 @@ public class Paciente extends Pessoa{
     public LocalDate getDataCadastro(){
         return dataCadastro;
     }
-
+     // Sobrescrever o método toString para exibir o nome do paciente
+    
 }

@@ -23,6 +23,9 @@ public class PostoDeSaude {
     public static void adicionarReceita(Receita receita) {
         receitas.add(receita);
     }
+     public static void adicionarPaciente(Paciente paciente) {
+        pacientes.add(paciente);
+    }
     
     public static ArrayList<Receita> getReceitas() {
         return (ArrayList<Receita>) receitas;
@@ -37,10 +40,11 @@ public class PostoDeSaude {
         medico.setNome("Dr. João"); // Corrigido o nome para "Dr. João"
         medicos.add(medico);
        
-        medico.setEspecialidade("Plantão");
-        medico.setCrm("54321");
-        medico.setNome("Antonio"); // Corrigido o nome para "Dr. João"
-        medicos.add(medico);
+        Medico antonio = new Medico();
+        antonio.setEspecialidade("Plantão");
+        antonio.setCrm("54321");
+        antonio.setNome("Antonio"); // Corrigido o nome para "Dr. João"
+        medicos.add(antonio);
  // Criar um paciente
         Paciente p1 = new Paciente("123456789", "12345", LocalDate.now(), "Maria Oliveira");
         PostoDeSaude.pacientes.add(p1);
@@ -82,7 +86,7 @@ public class PostoDeSaude {
                         break;
                     }
                     // Inserir um novo paciente
-                    System.out.print("Digite o Nome do paciente: ");
+                    /*System.out.print("Digite o Nome do paciente: ");
                      String nomePaciente = scanner.nextLine();
                     System.out.print("Digite o número do SUS do paciente: ");
                     String numeroSus = scanner.nextLine();
@@ -94,20 +98,18 @@ public class PostoDeSaude {
                     // Converter a data de cadastro para LocalDate
                     LocalDate dataCadastro = LocalDate.parse(dataCadastroStr);
 
-                    // Criar um novo objeto Paciente
-                    Paciente paciente = new Paciente(numeroSus, prontuario, dataCadastro,nomePaciente);
+                    // Criar um novo objeto Paciente*/
+                    Paciente paciente = new Paciente("123456789", "12345", LocalDate.now(), "Maria Oliveira");
 
                     // Adicionar o paciente à lista de pacientes
-                    pacientes.add(paciente);
+                   // pacientes.add(paciente);
 
                     // Confirmar adição
-                    System.out.println("Paciente adicionado: " + paciente);
+                    //System.out.println("Paciente adicionado com sucesso");
                     
-                    Farmaceutico farmaceutico = new Farmaceutico();
-                    Medicamento med = new Medicamento("Paracetamol", "500mg", 1);
-
-    // Testar fornecimento de medicamento
-                        farmaceutico.forneceMedicamentos(paciente, med);
+                    //Farmaceutico farmaceutico = new Farmaceutico();
+                    secretaria.cadastrarDocumentos();
+                    
                     break;
 
                 case 2:
