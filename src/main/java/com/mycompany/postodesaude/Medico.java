@@ -87,7 +87,9 @@ public class Medico extends Pessoa{
                     enfermeiro.aplicarMedicacao(paciente, medicamento);   
                     break;
                 case 2:
-                    System.out.println("Ainda nao implementado");
+                    Enfermeiro enfermeira = new Enfermeiro();
+                    enfermeira.setCoren("12345");
+                    enfermeira.realizarInjecao(paciente);
                     break;
                          
             }
