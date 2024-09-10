@@ -29,6 +29,15 @@ public class Medico extends Pessoa{
      }
       public void encaminharParaTratamento(Paciente paciente) {
              System.out.println("Encaminhando paciente com prontuário " + paciente.getProntuario() + " para tratamento.");
+             
+             
+              // Exemplos de medicamento
+        Medicamento medicamento = new Medicamento("Paracetamol", "500mg",1);
+        encaminharParaMedicamento(paciente, medicamento);
+        // Aplicar medicação (supondo que o enfermeiro é responsável por isso)
+        Enfermeiro enfermeiro = new Enfermeiro();
+        enfermeiro.setCoren("12345");
+        enfermeiro.aplicarMedicacao(paciente, medicamento);
     }
 
       public void encaminharParaMedicamento(Paciente paciente, Medicamento medicamento) {
