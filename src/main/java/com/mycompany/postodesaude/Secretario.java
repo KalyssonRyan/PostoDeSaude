@@ -21,7 +21,7 @@ public class Secretario extends Pessoa{
         return turno;
     }
     public void verificarDocumentos(Paciente paciente) {
-        // Lógica para verificar documentos
+        
     }
 
     // Dentro da classe Secretario

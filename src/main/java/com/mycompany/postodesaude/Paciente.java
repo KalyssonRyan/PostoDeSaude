@@ -18,7 +18,8 @@ public class Paciente extends Pessoa{
     private String prontuario;
     private LocalDate dataCadastro;
 
-    public Paciente(String numeroSus, String prontuario, LocalDate dataCadastro){
+    public Paciente(String nome, String cpf, int idade, String telefone, String numeroSus, String prontuario, String dataCadastro){
+        super(nome, cpf, idade, telefone);
         this.numeroSus = numeroSus;
         this.prontuario = prontuario;
         this.dataCadastro = dataCadastro;
@@ -26,15 +27,19 @@ public class Paciente extends Pessoa{
 
     //O paciente vai solicitar uma consulta aqui, para isso devemos colocar objetos e dados no parâmetro.
     //Esse método vai retornar um objeto consulta.
-    public Consulta solicitaConsulta(Medico medico, Paciente paciente, String data, String hora){
+    public Consulta solicitaConsulta(Medico medico, String data, String hora){
         Consulta consulta = new Consulta(data, hora, medico, this);
-        System.out.println("Consulta solicitada com o médico:"+medico+"\n"+"Para o dia:"+data+"\n"+"No horario de:"+hora+"\n");
+        System.out.println("Consulta solicitada com o médico:"+medico.getNome+"\n"
+        +"Para o dia:"+data+"\n"
+        +"No horario de:"+hora+"\n");
         return consulta;
     }  
 
     //Terminar implementação quando secretario estiver ok.
     public void cancelaAgendamento(Consulta consulta){
-        System.out.println("Consulta com o médico " + consulta.getMedico().getNome() + "no dia"+consulta.getData()+" foi cancelada.");
+        System.out.println("Consulta com o médico " + consulta.getMedico().getNome() +
+        "no dia"+consulta.getData()+
+        " foi cancelada.");
     }
 
     //Terminar a implementação dessa classe, quando houver uma classe farmacêutico.
