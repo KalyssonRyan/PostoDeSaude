@@ -221,6 +221,9 @@ public class PostoDeSaude {
     }
     return null; // Retorna null se não encontrar nenhuma consulta
 }
+     public static ArrayList<Receita> getReceitas() {
+        return (ArrayList<Receita>) receitas;
+    }
 
     
 }

@@ -39,7 +39,7 @@ public class Enfermeiro extends Pessoa {
     }
 
     private Receita encontrarReceita(Paciente paciente, Medico medico) {
-        for (Receita receita : medico.getReceitas()) {
+        for (Receita receita : PostoDeSaude.getReceitas()) {
             if (receita.getPaciente().equals(paciente)) {
                 return receita;
             }

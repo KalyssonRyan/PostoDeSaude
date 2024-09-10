@@ -128,23 +128,22 @@ public class Medico extends Pessoa{
     // Apenas exibe a data de solicitação sem criar uma nova classe Exame ou armazenar os dados em listas
     System.out.println("Data da solicitação: " + new Date());
     }
-     public void prescreverReceita(Paciente paciente) {
-        Receita receita = new Receita();
-        receita.setPaciente(paciente);
-        receita.setMedico(this);
+    public void prescreverReceita(Paciente paciente) {
+    Receita receita = new Receita();
+    receita.setPaciente(paciente);
+    receita.setMedico(this);
 
-        System.out.println("Digite o nome dos medicamentos (separados por vírgula): ");
-        String[] medicamentos = scanner.nextLine().split(",");
-        for (String med : medicamentos) {
-            Medicamento medicamento = new Medicamento(med.trim(), "dosagem padrão", 1); // Ajuste a dosagem e quantidade conforme necessário
-            receita.adicionarMedicamento(medicamento);
-        }
+    System.out.println("Digite o nome dos medicamentos (separados por vírgula): ");
+    String[] medicamentos = scanner.nextLine().split(",");
+    for (String med : medicamentos) {
+        Medicamento medicamento = new Medicamento(med.trim(), "dosagem padrão", 1);
+        receita.adicionarMedicamento(medicamento);
+    }
 
-        receitas.add(receita);
-        System.out.println("Receita prescrita com sucesso.");
-    }
-        public static ArrayList<Receita> getReceitas() {
-            return receitas;
-    }
+    // Adiciona a receita à lista de receitas na classe Main
+    PostoDeSaude.getReceitas().add(receita);
+    System.out.println("Receita prescrita com sucesso.");
+} 
+        
       //public void emcaminharParaTratamento()
 }

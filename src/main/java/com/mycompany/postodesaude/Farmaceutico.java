@@ -32,14 +32,14 @@ public class Farmaceutico extends Pessoa {
         }
     }
 
+   
     private Receita encontrarReceita(Paciente paciente) {
-        for (Receita receita : Medico.getReceitas()) {
-            if (receita.getPaciente().equals(paciente)) {
-                return receita;
-            }
+    for (Receita receita : PostoDeSaude.getReceitas()) {
+        if (receita.getPaciente().equals(paciente)) {
+            return receita;
         }
-        return null;
     }
-	
+    return null;
+}
 
 }
