@@ -29,7 +29,8 @@ public class Medico extends Pessoa{
 
      public String getCrm(){
          return crm;
-     }public void realizarDiagnostico(Paciente paciente) {
+     }
+     public void realizarDiagnostico(Paciente paciente) {
     // Exibir informações do paciente
     System.out.println("Analisando o prontuário número " + paciente.getProntuario() + " do paciente " + paciente.getNome());
 
@@ -62,7 +63,7 @@ public class Medico extends Pessoa{
             System.out.println("Opção inválida.");
     }
 }
-      public void encaminharParaTratamento(Paciente paciente) {
+   public void encaminharParaTratamento(Paciente paciente) {
              System.out.println("Encaminhando paciente com prontuário " + paciente.getProntuario() + " para tratamento.");
              
 
@@ -84,9 +85,10 @@ public class Medico extends Pessoa{
                     Enfermeiro enfermeiro = new Enfermeiro();
                     enfermeiro.setCoren("12345");
                     enfermeiro.aplicarMedicacao(paciente, medicamento);   
-                    scanner.close();
+                    break;
                 case 2:
                     System.out.println("Ainda nao implementado");
+                    break;
                          
             }
             

@@ -26,7 +26,7 @@ public class Farmaceutico extends Pessoa {
 
 	public void forneceMedicamentos(Paciente paciente,Medicamento medicamento) {
         // Lógica para fornecer medicamentos ao paciente
-        System.out.println("Farmacêutico fornecendo medicamento " + medicamento + " para o paciente com prontuário " + paciente.getProntuario() + ".");
+        System.out.println("Farmacêutico fornecendo medicamento " + medicamento.getNomeMedicamento() + " para o paciente com prontuário " + paciente.getProntuario() + ".");
     }
 
 }
