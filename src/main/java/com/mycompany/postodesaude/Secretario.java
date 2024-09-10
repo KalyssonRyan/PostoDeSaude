@@ -13,6 +13,11 @@ import java.util.Scanner;
 public class Secretario extends Pessoa{
     private String turno;
 
+    public Secretario(String nome, String cpf, int idade, String telefone, String turno){
+        super(nome, cpf, idade, telefone);
+        this.turno = turno;
+    }
+
     public void setTurno(String turno){
         this.turno = turno;
     }
