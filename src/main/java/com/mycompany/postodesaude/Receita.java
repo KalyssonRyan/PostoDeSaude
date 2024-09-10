@@ -19,7 +19,7 @@ public class Receita {
 	private ArrayList<Medicamento> listaMedicamentos;
 
 	public void setPaciente(Paciente paciente) {
-
+		this.paciente = paciente;
 	}
 
 	public Paciente getPaciente() {
@@ -31,7 +31,7 @@ public class Receita {
 	}
 
 	public void setMedico(Medico medico) {
-
+		this.medico = medico;
 	}
 
 }

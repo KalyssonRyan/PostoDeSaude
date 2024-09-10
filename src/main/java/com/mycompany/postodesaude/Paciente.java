@@ -32,7 +32,7 @@ public class Paciente extends Pessoa{
 
     //Terminar implementação quando secretario estiver ok.
     public void cancelaAgendamento(Consulta consulta){
-        System.out.println("Consulta com o médico " + consulta.getMedico().getNome() + "no dia"+consulta.getData()+" foi cancelada");
+        System.out.println("Consulta com o médico " + consulta.getMedico().getNome() + "no dia"+consulta.getData()+" foi cancelada.");
     }
 
     //Terminar a implementação dessa classe, quando houver uma classe farmacêutico.
@@ -44,7 +44,7 @@ public class Paciente extends Pessoa{
         System.out.println("medicação tomada com enfermeiro.");
     }
 
-    
+
 
     public void setNumeroSus(String numeroSus) {
         this.numeroSus = numeroSus;
