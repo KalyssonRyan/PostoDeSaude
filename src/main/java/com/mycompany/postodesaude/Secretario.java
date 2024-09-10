@@ -79,8 +79,14 @@ public class Secretario extends Pessoa{
         Scanner scanner = new Scanner(System.in);
         System.out.print("Digite o Nome do paciente: ");
         String nomePaciente = scanner.nextLine();
+       
         System.out.print("Digite o número do SUS do paciente: ");
         String numeroSus = scanner.nextLine();
+         try{
+            System.out.println("sei nao");
+        }catch(NullPointerException erro){
+            System.out.println(erro);
+        }
         System.out.print("Digite o prontuário do paciente: ");
         String prontuario = scanner.nextLine();
         System.out.print("Digite a data de cadastro do paciente (yyyy-mm-dd): ");

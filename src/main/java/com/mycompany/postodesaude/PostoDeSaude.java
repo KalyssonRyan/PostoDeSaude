@@ -86,7 +86,7 @@ public class PostoDeSaude {
                         break;
                     }
                     // Inserir um novo paciente
-                    /*System.out.print("Digite o Nome do paciente: ");
+                    System.out.print("Digite o Nome do paciente: ");
                      String nomePaciente = scanner.nextLine();
                     System.out.print("Digite o número do SUS do paciente: ");
                     String numeroSus = scanner.nextLine();
@@ -98,7 +98,7 @@ public class PostoDeSaude {
                     // Converter a data de cadastro para LocalDate
                     LocalDate dataCadastro = LocalDate.parse(dataCadastroStr);
 
-                    // Criar um novo objeto Paciente*/
+                    // Criar um novo objeto Paciente
                     Paciente paciente = new Paciente("123456789", "12345", LocalDate.now(), "Maria Oliveira");
 
                     // Adicionar o paciente à lista de pacientes
@@ -108,12 +108,13 @@ public class PostoDeSaude {
                     //System.out.println("Paciente adicionado com sucesso");
                     
                     //Farmaceutico farmaceutico = new Farmaceutico();
-                    secretaria.cadastrarDocumentos();
+                    //secretaria.cadastrarDocumentos();
                     
                     break;
 
                 case 2:
                     // Agendar consulta
+                        
                     if (secretarios.isEmpty()) {
                         System.out.println("Nenhum secretário disponível para agendar consulta.");
                         break;
@@ -227,9 +228,11 @@ public class PostoDeSaude {
     static Paciente encontrarPacientePorNumeroSus(String numeroSus) {
         for (Paciente p : pacientes) {
             if (p.getNumeroSus().equals(numeroSus)) {
+                
                 return p;
             }
         }
+        Paciente p = new Paciente();
         return null;
     }
 
