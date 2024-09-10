@@ -49,6 +49,8 @@ public class Medico extends Pessoa{
         switch (escolha) {
             case 1 -> {
                 System.out.print("Digite o número do SUS do paciente para encaminhar para tratamento: ");
+                
+                
                 String pacienteNumero = scanner.nextLine();
                 Paciente pacienteTratamento = encontrarPacientePorNumeroSus(pacienteNumero);
                 if (pacienteTratamento != null) {
@@ -64,41 +66,41 @@ public class Medico extends Pessoa{
                 solicitarExame(paciente);
              }
             case 3->{
-                prescreverReceita(paciente);
+                
             }
             default -> System.out.println("Opção inválida.");
         }
-}
-   public void encaminharParaTratamento(Paciente paciente) {
-             System.out.println("Encaminhando paciente com prontuário " + paciente.getProntuario() + " para tratamento.");
-             
+    }
+    public void encaminharParaTratamento(Paciente paciente) {
+        System.out.println("Encaminhando paciente com prontuário " + paciente.getProntuario() + " para tratamento.");
 
-              
-      
-             System.out.println("----------------");
-            System.out.println("Tratamento:");
-            System.out.println("1-Encaminhar para Medicamento");
-            System.out.println("2-Encaminhar para injeção");
-            System.out.print("Escolha uma opção: ");
-        
-            int escolha = scanner.nextInt();
-            scanner.nextLine(); 
-            switch(escolha){
-                 case 1:
-                Medicamento medicamento = new Medicamento("Paracetamol", "500mg", 1);
-                encaminharParaMedicamento(paciente, medicamento);
-                // Aplicar medicação (supondo que o enfermeiro é responsável por isso)
-                Enfermeiro enfermeiro = new Enfermeiro();
-                enfermeiro.setCoren("12345");
-                enfermeiro.aplicarMedicacao(paciente, medicamento, this); // Passa o médico atual
-                break;
-            case 2:
-                Enfermeiro enfermeira = new Enfermeiro();
-                enfermeira.setCoren("12345");
-                enfermeira.realizarInjecao(paciente, this); // Passa o médico atual
-                break;
-                         
-            }
+
+
+
+        System.out.println("----------------");
+       System.out.println("Tratamento:");
+       System.out.println("1-Encaminhar para Medicamento");
+       System.out.println("2-Encaminhar para injeção");
+       System.out.print("Escolha uma opção: ");
+
+       int escolha = scanner.nextInt();
+       scanner.nextLine(); 
+       switch(escolha){
+            case 1:
+           Medicamento medicamento = new Medicamento("Paracetamol", "500mg", 1);
+           encaminharParaMedicamento(paciente, medicamento);
+           // Aplicar medicação (supondo que o enfermeiro é responsável por isso)
+           Enfermeiro enfermeiro = new Enfermeiro();
+           enfermeiro.setCoren("12345");
+           enfermeiro.aplicarMedicacao(paciente, medicamento, this); // Passa o médico atual
+           break;
+       case 2:
+           Enfermeiro enfermeira = new Enfermeiro();
+           enfermeira.setCoren("12345");
+           enfermeira.realizarInjecao(paciente, this); // Passa o médico atual
+           break;
+
+       }
             
             
         
@@ -106,7 +108,7 @@ public class Medico extends Pessoa{
             
     }
 
-      public void encaminharParaMedicamento(Paciente paciente, Medicamento medicamento) {
+     public void encaminharParaMedicamento(Paciente paciente, Medicamento medicamento) {
         Farmaceutico farmaceutico = new Farmaceutico(); 
         farmaceutico.forneceMedicamentos(paciente, medicamento);
     }
@@ -128,7 +130,7 @@ public class Medico extends Pessoa{
         // Apenas exibe a data de solicitação sem criar uma nova classe Exame ou armazenar os dados em listas
         System.out.println("Data da solicitação: " + new Date());
     }
-    public void prescreverReceita(Paciente paciente) {
+     public void prescreverReceita(Paciente paciente) {
         Receita receita = new Receita();
         receita.setPaciente(paciente);
         receita.setMedico(this);
@@ -141,9 +143,9 @@ public class Medico extends Pessoa{
         }
 
         // Adicionando à lista global de receitas
-        PostoDeSaude.adicionarReceita(receita); // Certifique-se de adicionar corretamente
+        PostoDeSaude.adicionarReceita(receita);
         System.out.println("Receita prescrita com sucesso.");
-}
+    }
         
       //public void emcaminharParaTratamento()
 }
