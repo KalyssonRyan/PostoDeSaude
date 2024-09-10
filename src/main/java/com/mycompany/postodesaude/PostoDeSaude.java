@@ -92,7 +92,7 @@ public class PostoDeSaude {
                         System.out.println("Nenhuma consulta agendada para cancelar.");
                         break;
                     }
-                    System.out.print("Digite o número do prontuário para cancelar a consulta: ");
+                    System.out.print("Digite o número do SUS para cancelar a consulta: ");
                     var NumeroPaciente = scanner.nextLine();
                     Paciente pacienteCancelamento = encontrarPacientePorNumeroSus(NumeroPaciente);
                     if (pacienteCancelamento == null) {
@@ -137,7 +137,7 @@ public class PostoDeSaude {
                     System.out.println("Medicamento criado: " + medicamento);
 
                     // Encaminhar para tratamento
-                    System.out.print("Digite o número do prontuário do paciente para encaminhar para tratamento: ");
+                    System.out.print("Digite o número do SUS do paciente para encaminhar para tratamento: ");
                     String pacienteNumero = scanner.nextLine();
                     Paciente pacienteTratamento = encontrarPacientePorNumeroSus(pacienteNumero);
                     if (pacienteTratamento != null) {
