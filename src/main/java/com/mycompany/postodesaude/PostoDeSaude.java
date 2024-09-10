@@ -10,10 +10,10 @@ import java.util.Scanner;
 
 public class PostoDeSaude {
     // Listas privadas
-    private static List<Paciente> pacientes = new ArrayList<>();
+    static List<Paciente> pacientes = new ArrayList<>();
     private static List<Secretario> secretarios = new ArrayList<>();
     private static List<Enfermeiro> enfermeiros = new ArrayList<>();
-    private static List<Consulta> consultas = new ArrayList<>();
+    static List<Consulta> consultas = new ArrayList<>();
     private static List<Farmaceutico> farmacêuticos = new ArrayList<>();
     private static List<Medicamento> medicamentos = new ArrayList<>();
     private static List<Receita> receitas = new ArrayList<>();
@@ -30,6 +30,9 @@ public class PostoDeSaude {
         medico.setNome("Dr. João"); // Corrigido o nome para "Dr. João"
         medicos.add(medico);
 
+        Secretario secretario = new Secretario();
+        secretario.setTurno("Manhã");
+        secretarios.add(secretario);
         // Início do menu
         while (true) {
             System.out.println("Menu:");
@@ -39,6 +42,9 @@ public class PostoDeSaude {
             System.out.println("3 - Cancelar consulta");
             System.out.println("-------Medico-------");
             System.out.println("4 - Inserir medicamento e encaminhar para tratamento");
+            System.out.println("4 - Realizer Dignostico");
+            System.out.println("4 - Solicitar Exame");
+            System.out.println("4 - Prescrever Receita");
             System.out.println("5 - Encaminhar para exame");
             System.out.println("6 - Encaminhar para receita");
             System.out.println("7 - Sair");
@@ -72,29 +78,12 @@ public class PostoDeSaude {
 
                 case 2:
                     // Agendar consulta
-                    System.out.print("Digite o número do SUS do paciente para a consulta: ");
-                    String NumeroSusPaciente = scanner.nextLine();
-                    Paciente pacienteEscolhido = encontrarPacientePorNumeroSus(NumeroSusPaciente);
-                    if (pacienteEscolhido == null) {
-                        System.out.println("Paciente não encontrado.");
+                    if (secretarios.isEmpty()) {
+                        System.out.println("Nenhum secretário disponível para agendar consulta.");
                         break;
                     }
-
-                    System.out.print("Digite o nome do médico para a consulta: ");
-                    String nomeMedico = scanner.nextLine();
-                    Medico medicoEscolhido = encontrarMedicoPorNome(nomeMedico);
-                    if (medicoEscolhido == null) {
-                        System.out.println("Médico não encontrado.");
-                        break;
-                    }
-
-                    System.out.print("Digite a data da consulta (formato YYYY-MM-DD): ");
-                    String dataConsulta = scanner.nextLine();
-                    System.out.print("Digite a hora da consulta (formato HH:MM): ");
-                    String horaConsulta = scanner.nextLine();
-                    
-                    Consulta novaConsulta = pacienteEscolhido.solicitaConsulta(medicoEscolhido, pacienteEscolhido, dataConsulta, horaConsulta);
-                    consultas.add(novaConsulta);
+                    Secretario secretarioAtual = secretarios.get(0); // Supondo que você tem um secretário disponível
+                    secretarioAtual.agendarConsulta();
                     break;
 
                 case 3:
@@ -186,7 +175,7 @@ public class PostoDeSaude {
     }
 
     // Métodos auxiliares
-    private static Paciente encontrarPacientePorNumeroSus(String numeroSus) {
+    static Paciente encontrarPacientePorNumeroSus(String numeroSus) {
         for (Paciente p : pacientes) {
             if (p.getNumeroSus().equals(numeroSus)) {
                 return p;
@@ -195,7 +184,7 @@ public class PostoDeSaude {
         return null;
     }
 
-    private static Medico encontrarMedicoPorNome(String nome) {
+    static Medico encontrarMedicoPorNome(String nome) {
         for (Medico m : medicos) {
             if (m.getNome().equals(nome)) {
                 return m;
@@ -203,4 +192,29 @@ public class PostoDeSaude {
         }
         return null;
     }
+    public static Consulta encontrarConsulta(String numeroSus, String data, String hora) {
+        Paciente paciente = encontrarPacientePorNumeroSus(numeroSus);
+        if (paciente == null) {
+            return null;
+        }
+        for (Consulta c : consultas) {
+            if (c.getPaciente().equals(paciente) &&
+                c.getData().equals(data) &&
+                c.getHora().equals(hora)) {
+                return c;
+            }
+        }
+        return null;
+    }  
+    public static void removerConsulta(Consulta consulta) {
+        consultas.remove(consulta);
+    }
+
+ 
+    public static void adicionarConsulta(Consulta consulta) {
+        consultas.add(consulta);
+    }
+
+
+    
 }
