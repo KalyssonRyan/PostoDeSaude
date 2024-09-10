@@ -18,6 +18,7 @@ public class Medicamento {
         this.dosagem = dosagem;
         this.quantidade = quantidade;
     }
+    //Construtor vazio
     public Medicamento() {
     }
 
