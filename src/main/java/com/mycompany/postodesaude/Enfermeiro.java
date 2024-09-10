@@ -1,13 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.postodesaude;
-
-/**
- *
- * @author Kalysson
- */
 
 public class Enfermeiro extends Pessoa {
     private String coren;
@@ -38,9 +29,10 @@ public class Enfermeiro extends Pessoa {
         this.coren = coren;
     }
 
+    // Método privado que verifica a receita associada ao médico
     private Receita encontrarReceita(Paciente paciente, Medico medico) {
         for (Receita receita : PostoDeSaude.getReceitas()) {
-            if (receita.getPaciente().equals(paciente)) {
+            if (receita.getPaciente().equals(paciente) && receita.getMedico().equals(medico)) {
                 return receita;
             }
         }

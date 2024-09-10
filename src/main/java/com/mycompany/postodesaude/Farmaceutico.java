@@ -24,11 +24,33 @@ public class Farmaceutico extends Pessoa {
 
 	}
         public void forneceMedicamentos(Paciente paciente, Medicamento medicamento) {
-        Receita receita = encontrarReceita(paciente);
-        if (receita != null && receita.getListaMedicamentos().contains(medicamento)) {
-            System.out.println("Farmacêutico com CRF " + crf + " fornecendo medicamento " + medicamento.getNomeMedicamento() + " para o paciente com prontuário " + paciente.getProntuario() + ".");
+        // Verifica se o paciente tem uma receita associada
+        Receita receitaPaciente = null;
+        for (Receita receita : PostoDeSaude.getReceitas()) {
+            if (receita.getPaciente().equals(paciente)) {
+                receitaPaciente = receita;
+                break;
+            }
+        }
+        
+        if (receitaPaciente == null) {
+            System.out.println("Paciente não possui receita.");
+            return;
+        }
+        
+        // Verifica se o medicamento está na receita
+        boolean medicamentoPrescrito = false;
+        for (Medicamento med : receitaPaciente.getListaMedicamentos()) {
+            if (med.getNomeMedicamento().equals(medicamento.getNomeMedicamento())) {
+                medicamentoPrescrito = true;
+                break;
+            }
+        }
+        
+        if (medicamentoPrescrito) {
+            System.out.println("Medicamento " + medicamento.getNomeMedicamento() + " fornecido ao paciente " + paciente.getNome() + ".");
         } else {
-            System.out.println("Paciente não tem uma receita para este medicamento.");
+            System.out.println("Medicamento " + medicamento.getNomeMedicamento() + " não está prescrito na receita.");
         }
     }
 

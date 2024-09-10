@@ -116,34 +116,34 @@ public class Medico extends Pessoa{
     public void solicitarExame(Paciente paciente) {
      
    
-    System.out.println("Digite o nome do exame a ser solicitado:");
-    String nomeExame = scanner.nextLine();
+        System.out.println("Digite o nome do exame a ser solicitado:");
+        String nomeExame = scanner.nextLine();
 
-    System.out.println("Digite o tipo do exame:");
-    String tipoExame = scanner.nextLine();
+        System.out.println("Digite o tipo do exame:");
+        String tipoExame = scanner.nextLine();
 
-    // Exibir a confirmação da solicitação
-    System.out.println("Exame '" + nomeExame + "' do tipo '" + tipoExame + "' solicitado para o paciente " + paciente.getNome() + ".");
-    
-    // Apenas exibe a data de solicitação sem criar uma nova classe Exame ou armazenar os dados em listas
-    System.out.println("Data da solicitação: " + new Date());
+        // Exibir a confirmação da solicitação
+        System.out.println("Exame '" + nomeExame + "' do tipo '" + tipoExame + "' solicitado para o paciente " + paciente.getNome() + ".");
+
+        // Apenas exibe a data de solicitação sem criar uma nova classe Exame ou armazenar os dados em listas
+        System.out.println("Data da solicitação: " + new Date());
     }
     public void prescreverReceita(Paciente paciente) {
-    Receita receita = new Receita();
-    receita.setPaciente(paciente);
-    receita.setMedico(this);
+        Receita receita = new Receita();
+        receita.setPaciente(paciente);
+        receita.setMedico(this);
 
-    System.out.println("Digite o nome dos medicamentos (separados por vírgula): ");
-    String[] medicamentos = scanner.nextLine().split(",");
-    for (String med : medicamentos) {
-        Medicamento medicamento = new Medicamento(med.trim(), "dosagem padrão", 1);
-        receita.adicionarMedicamento(medicamento);
-    }
+        System.out.println("Digite o nome dos medicamentos (separados por vírgula): ");
+        String[] medicamentos = scanner.nextLine().split(",");
+        for (String med : medicamentos) {
+            Medicamento medicamento = new Medicamento(med.trim(), "dosagem padrão", 1);
+            receita.adicionarMedicamento(medicamento);
+        }
 
-    // Adiciona a receita à lista de receitas na classe Main
-    PostoDeSaude.getReceitas().add(receita);
-    System.out.println("Receita prescrita com sucesso.");
-} 
+        // Adicionando à lista global de receitas
+        PostoDeSaude.adicionarReceita(receita); // Certifique-se de adicionar corretamente
+        System.out.println("Receita prescrita com sucesso.");
+}
         
       //public void emcaminharParaTratamento()
 }
