@@ -31,9 +31,7 @@ public class Medico extends Pessoa{
       public void encaminharParaTratamento(Paciente paciente) {
              System.out.println("Encaminhando paciente com prontuário " + paciente.getProntuario() + " para tratamento.");
              
-            
-      
-    
+
               // Exemplos de medicamento
        
         while(true){
@@ -47,13 +45,19 @@ public class Medico extends Pessoa{
             scanner.nextLine(); 
             switch(escolha){
                 case 1:
-                  Medicamento medicamento = new Medicamento("Paracetamol", "500mg",1);
+                    Medicamento medicamento = new Medicamento("Paracetamol", "500mg",1);
                     encaminharParaMedicamento(paciente, medicamento);
         // Aplicar medicação (supondo que o enfermeiro é responsável por isso)
                     Enfermeiro enfermeiro = new Enfermeiro();
                     enfermeiro.setCoren("12345");
                     enfermeiro.aplicarMedicacao(paciente, medicamento);   
+                    scanner.close();
+                case 2:
+                    System.out.println("Ainda nao implementado");
+                         
             }
+            
+            
         }
             
             
@@ -64,8 +68,9 @@ public class Medico extends Pessoa{
         farmaceutico.forneceMedicamentos(paciente, medicamento);
     }
 
-    public void realizarDiagnostico() {
+    public void realizarDiagnostico(Paciente paciente) {
         // Lógica para realizar diagnóstico
+        System.out.println("Analisando o Prontuario numero "+ paciente.getProntuario()+" do paciente "+paciente.getNome());
     }
 
     public void solicitarExame() {

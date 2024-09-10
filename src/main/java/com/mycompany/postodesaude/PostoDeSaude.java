@@ -37,7 +37,7 @@ public class PostoDeSaude {
         while (true) {
             System.out.println("Menu:");
             System.out.println("-------Secretaria-------");
-            System.out.println("1 - Adicionar Paciente");
+            System.out.println("1 - Cadastrar Paciente");
             System.out.println("2 - Agendar consulta");
             System.out.println("3 - Cancelar consulta");
             System.out.println("-------Medico-------");
@@ -56,6 +56,8 @@ public class PostoDeSaude {
             switch (escolha) {
                 case 1:
                     // Inserir um novo paciente
+                    System.out.print("Digite o Nome do paciente: ");
+                     String nomePaciente = scanner.nextLine();
                     System.out.print("Digite o número do SUS do paciente: ");
                     String numeroSus = scanner.nextLine();
                     System.out.print("Digite o prontuário do paciente: ");
@@ -67,7 +69,7 @@ public class PostoDeSaude {
                     LocalDate dataCadastro = LocalDate.parse(dataCadastroStr);
 
                     // Criar um novo objeto Paciente
-                    Paciente paciente = new Paciente(numeroSus, prontuario, dataCadastro);
+                    Paciente paciente = new Paciente(numeroSus, prontuario, dataCadastro,nomePaciente);
 
                     // Adicionar o paciente à lista de pacientes
                     pacientes.add(paciente);

@@ -18,7 +18,7 @@ public class Paciente extends Pessoa{
     private String prontuario;
     private LocalDate dataCadastro;
 
-    public Paciente(String numeroSus, String prontuario, LocalDate dataCadastro){
+    public Paciente(String numeroSus, String prontuario, LocalDate dataCadastro, String nomePaciente){
         this.numeroSus = numeroSus;
         this.prontuario = prontuario;
         this.dataCadastro = dataCadastro;
