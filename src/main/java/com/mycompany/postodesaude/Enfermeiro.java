@@ -21,11 +21,11 @@ public class Enfermeiro extends Pessoa {
 	}
 
 	public String getCoren() {
-		return null;
+		return this.coren;
 	}
 
 	public void setCoren(String coren) {
-
+            this.coren=coren;
 	}
 
 }
