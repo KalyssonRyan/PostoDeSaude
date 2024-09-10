@@ -87,12 +87,14 @@ public class Medico extends Pessoa{
        scanner.nextLine(); 
        switch(escolha){
             case 1:
-           Medicamento medicamento = new Medicamento("Paracetamol", "500mg", 1);
-           encaminharParaMedicamento(paciente, medicamento);
+           
+                
+                
+             
            // Aplicar medicação (supondo que o enfermeiro é responsável por isso)
            Enfermeiro enfermeiro = new Enfermeiro();
            enfermeiro.setCoren("12345");
-           enfermeiro.aplicarMedicacao(paciente, medicamento, this); // Passa o médico atual
+   
            break;
        case 2:
            Enfermeiro enfermeira = new Enfermeiro();
@@ -130,22 +132,25 @@ public class Medico extends Pessoa{
         // Apenas exibe a data de solicitação sem criar uma nova classe Exame ou armazenar os dados em listas
         System.out.println("Data da solicitação: " + new Date());
     }
-     public void prescreverReceita(Paciente paciente) {
-        Receita receita = new Receita();
-        receita.setPaciente(paciente);
-        receita.setMedico(this);
+    public void prescreverReceita(Paciente paciente) {
+    Receita receita = new Receita();
+    receita.setPaciente(paciente);
+    receita.setMedico(this); // O médico que está prescrevendo
 
-        System.out.println("Digite o nome dos medicamentos (separados por vírgula): ");
-        String[] medicamentos = scanner.nextLine().split(",");
-        for (String med : medicamentos) {
-            Medicamento medicamento = new Medicamento(med.trim(), "dosagem padrão", 1);
-            receita.adicionarMedicamento(medicamento);
-        }
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Digite a descrição dos medicamentos (em um único texto): ");
+    String descricaoMedicamentos = scanner.nextLine();
+    
+    // Cria um Medicamento genérico com a descrição fornecida
+    Medicamento medicamento = new Medicamento(descricaoMedicamentos, "dosagem padrão", 1);
+    receita.adicionarMedicamento(medicamento);
 
-        // Adicionando à lista global de receitas
-        PostoDeSaude.adicionarReceita(receita);
-        System.out.println("Receita prescrita com sucesso.");
-    }
+    // Adiciona a receita à lista global de receitas
+    PostoDeSaude.adicionarReceita(receita);
+    System.out.println("Receita prescrita com sucesso.");
+}
+ 
+     
         
       //public void emcaminharParaTratamento()
 }

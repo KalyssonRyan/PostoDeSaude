@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
-
+import com.mycompany.postodesaude.Medico;
 public class PostoDeSaude {
     // Listas privadas
     static List<Paciente> pacientes = new ArrayList<>();
@@ -16,7 +16,7 @@ public class PostoDeSaude {
     static List<Consulta> consultas = new ArrayList<>();
     private static List<Farmaceutico> farmacêuticos = new ArrayList<>();
     private static List<Medicamento> medicamentos = new ArrayList<>();
-    private static List<Receita> receitas = new ArrayList<>();
+    private static final List<Receita> receitas = new ArrayList<>();
     private static List<Medico> medicos = new ArrayList<>();
     private static List<Exame> exames = new ArrayList<>();
     
@@ -50,19 +50,11 @@ public class PostoDeSaude {
         medico.setEspecialidade("Clínica Geral");
         PostoDeSaude.medicos.add(medico);
 
-        // Prescrever uma receita para o paciente
-        medico.prescreverReceita(p1);
-
-        // Verificar se a receita foi adicionada
-        System.out.println("Receitas atuais:");
-        for (Receita receita : PostoDeSaude.getReceitas()) {
-            System.out.println(receita);
-        }
-        Secretario secretaria = new Secretario();
-        secretaria.setTurno("matutino");
-        secretarios.add(secretaria);
-        /*testando fazendo debug*/
         
+        //Cria uma secretaria
+        Secretario secretaria = new Secretario();
+        secretaria.setTurno("Matutino");
+        secretarios.add(secretaria);
         
         
         
@@ -75,6 +67,7 @@ public class PostoDeSaude {
             System.out.println("3 - Cancelar consulta");
             System.out.println("-------Medico-------");
             System.out.println("4 - Realizer Dignostico da consulta");
+            System.out.println("5-Prescrever Receita ");
             System.out.println("10-Inserir medicamento e ");
             System.out.println("11 - Sair");
             System.out.print("Escolha uma opção: ");
@@ -84,6 +77,10 @@ public class PostoDeSaude {
 
             switch (escolha) {
                 case 1:
+                     if (secretarios.isEmpty()) {
+                        System.out.println("Nenhum secretário disponível para cadastrar um paciente");
+                        break;
+                    }
                     // Inserir um novo paciente
                     System.out.print("Digite o Nome do paciente: ");
                      String nomePaciente = scanner.nextLine();
@@ -176,8 +173,26 @@ public class PostoDeSaude {
                     }
                     break;    
               
-                      
-            
+                    case 5:
+                       System.out.println("Digite o nome do médico:");
+                       String medicoNome = scanner.nextLine();
+                       medico = encontrarMedicoPorNome(medicoNome);
+                       if (medico == null) {
+                           System.out.println("Médico não encontrado.");
+                           break;
+                       }
+
+                       System.out.println("Digite o número do SUS do paciente:");
+                       String nmrSus = scanner.nextLine();
+                       paciente = encontrarPacientePorNumeroSus(nmrSus);
+                       if (paciente == null) {
+                           System.out.println("Paciente não encontrado.");
+                           break;
+                       }
+
+                       // Prescrever receita
+                       medico.prescreverReceita(paciente);
+                       break;
 
               
 

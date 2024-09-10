@@ -4,13 +4,26 @@ public class Enfermeiro extends Pessoa {
     private String coren;
 
     public void aplicarMedicacao(Paciente paciente, Medicamento medicamento, Medico medico) {
-        Receita receita = encontrarReceita(paciente, medico);
-        if (receita != null && receita.getListaMedicamentos().contains(medicamento)) {
-            System.out.println("Enfermeiro com COREN " + coren + " aplica o medicamento " + medicamento.getNomeMedicamento()+ " no paciente com prontuário " + paciente.getProntuario() + ".");
+    Receita receita = encontrarReceita(paciente, medico);
+    if (receita != null) {
+        boolean medicamentoEncontrado = false;
+        for (Medicamento med : receita.getListaMedicamentos()) {
+            if (med.getNomeMedicamento().equals(medicamento.getNomeMedicamento()) &&
+                med.getDosagem().equals(medicamento.getDosagem())) {
+                medicamentoEncontrado = true;
+                break;
+            }
+        }
+        if (medicamentoEncontrado) {
+            System.out.println("Enfermeiro com COREN " + coren + " aplica o medicamento " + medicamento.getNomeMedicamento() +
+                               " no paciente com prontuário " + paciente.getProntuario() + ".");
         } else {
             System.out.println("Paciente não tem uma receita para este medicamento.");
         }
+    } else {
+        System.out.println("Paciente não possui receita.");
     }
+}
 
     public void realizarInjecao(Paciente paciente, Medico medico) {
         Receita receita = encontrarReceita(paciente, medico);
