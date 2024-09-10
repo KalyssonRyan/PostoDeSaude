@@ -87,15 +87,19 @@ public class Medico extends Pessoa{
        scanner.nextLine(); 
        switch(escolha){
             case 1:
-           
-                
-                
-             
-           // Aplicar medicação (supondo que o enfermeiro é responsável por isso)
-           Enfermeiro enfermeiro = new Enfermeiro();
-           enfermeiro.setCoren("12345");
-   
-           break;
+           // Inserir dados do medicamento
+            System.out.print("Digite o nome do medicamento: ");
+            String nomeMedicamento = scanner.nextLine();
+            System.out.print("Digite a dosagem do medicamento: ");
+            String dosagem = scanner.nextLine();
+            
+            Medicamento medicamento = new Medicamento(nomeMedicamento, dosagem, 1); // Exemplo com quantidade 1
+            Enfermeiro enfermeiro = new Enfermeiro();
+            enfermeiro.setCoren("12345");
+            
+            enfermeiro.aplicarMedicacao(paciente, medicamento, this);
+            break;
+
        case 2:
            Enfermeiro enfermeira = new Enfermeiro();
            enfermeira.setCoren("12345");
