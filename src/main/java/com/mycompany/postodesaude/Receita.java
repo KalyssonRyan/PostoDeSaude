@@ -4,35 +4,43 @@
  */
 package com.mycompany.postodesaude;
 
+
 import java.util.ArrayList;
 
-/**
- *
- * @author Kalysson
- */
 public class Receita {
+    private Paciente paciente;
+    private Medico medico;
+    private ArrayList<Medicamento> listaMedicamentos;
 
-	private Paciente paciente;
+    public Receita() {
+        listaMedicamentos = new ArrayList<>();
+    }
 
-	private Medico medico;
+    public Paciente getPaciente() {
+        return paciente;
+    }
 
-	private ArrayList<Medicamento> listaMedicamentos;
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
 
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
+    public Medico getMedico() {
+        return medico;
+    }
 
-	public Paciente getPaciente() {
-		return null;
-	}
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
 
-	public Medico getMedico() {
-		return null;
-	}
+    public ArrayList<Medicamento> getListaMedicamentos() {
+        return listaMedicamentos;
+    }
 
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
+    public void adicionarMedicamento(Medicamento medicamento) {
+        listaMedicamentos.add(medicamento);
+    }
 
+    public void removerMedicamento(Medicamento medicamento) {
+        listaMedicamentos.remove(medicamento);
+    }
 }
-

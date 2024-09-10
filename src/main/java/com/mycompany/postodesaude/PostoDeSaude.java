@@ -29,6 +29,11 @@ public class PostoDeSaude {
         medico.setCrm("123456");
         medico.setNome("Dr. João"); // Corrigido o nome para "Dr. João"
         medicos.add(medico);
+       
+        medico.setEspecialidade("Plantão");
+        medico.setCrm("54321");
+        medico.setNome("Antonio"); // Corrigido o nome para "Dr. João"
+        medicos.add(medico);
 
         Secretario secretario = new Secretario();
         secretario.setTurno("Manhã");
@@ -37,17 +42,17 @@ public class PostoDeSaude {
         while (true) {
             System.out.println("Menu:");
             System.out.println("-------Secretaria-------");
-            System.out.println("1 - Adicionar Paciente");
+            System.out.println("1 - Cadastrar Paciente");
             System.out.println("2 - Agendar consulta");
             System.out.println("3 - Cancelar consulta");
             System.out.println("-------Medico-------");
-            System.out.println("4 - Inserir medicamento e encaminhar para tratamento");
-            System.out.println("4 - Realizer Dignostico");
-            System.out.println("4 - Solicitar Exame");
-            System.out.println("4 - Prescrever Receita");
-            System.out.println("5 - Encaminhar para exame");
-            System.out.println("6 - Encaminhar para receita");
-            System.out.println("7 - Sair");
+            System.out.println("5 - Realizer Dignostico da consulta");
+            System.out.println("6 - Solicitar Exame");
+            System.out.println("7 - Prescrever Receita");
+            System.out.println("8 - Encaminhar para exame");
+            System.out.println("9 - Encaminhar para receita");
+            System.out.println("10-Inserir medicamento e ");
+            System.out.println("11 - Sair");
             System.out.print("Escolha uma opção: ");
 
             int escolha = scanner.nextInt();
@@ -56,6 +61,8 @@ public class PostoDeSaude {
             switch (escolha) {
                 case 1:
                     // Inserir um novo paciente
+                    System.out.print("Digite o Nome do paciente: ");
+                     String nomePaciente = scanner.nextLine();
                     System.out.print("Digite o número do SUS do paciente: ");
                     String numeroSus = scanner.nextLine();
                     System.out.print("Digite o prontuário do paciente: ");
@@ -67,7 +74,7 @@ public class PostoDeSaude {
                     LocalDate dataCadastro = LocalDate.parse(dataCadastroStr);
 
                     // Criar um novo objeto Paciente
-                    Paciente paciente = new Paciente(numeroSus, prontuario, dataCadastro);
+                    Paciente paciente = new Paciente(numeroSus, prontuario, dataCadastro,nomePaciente);
 
                     // Adicionar o paciente à lista de pacientes
                     pacientes.add(paciente);
@@ -82,7 +89,7 @@ public class PostoDeSaude {
                         System.out.println("Nenhum secretário disponível para agendar consulta.");
                         break;
                     }
-                    Secretario secretarioAtual = secretarios.get(0); // Supondo que você tem um secretário disponível
+                    Secretario secretarioAtual = secretarios.get(0); 
                     secretarioAtual.agendarConsulta();
                     break;
 
@@ -120,9 +127,43 @@ public class PostoDeSaude {
                     }
                     break;
 
+                 case 4:
+                    System.out.println("Realizando diagnóstico");
+                    System.out.print("Digite o Numero do SUS do Paciente para o diagnóstico: ");
+                    String pacienteSus = scanner.nextLine();
+                    Paciente pacienteDiagnostico = encontrarPacientePorNumeroSus(pacienteSus);
 
-                case 4:
-                    // Inserir medicamento e encaminhar para tratamento
+                    if (pacienteDiagnostico != null) {
+                        // Verifica se o paciente tem consulta agendada
+                        Consulta consultaPaciente = encontrarConsultaPorPaciente(pacienteDiagnostico);
+                        if (consultaPaciente != null) {
+                            medico.realizarDiagnostico(pacienteDiagnostico);
+                        } else {
+                            System.out.println("Paciente não tem consulta marcada. Diagnóstico não permitido.");
+                        }
+                    } else {
+                        System.out.println("Paciente não encontrado.");
+                    }
+                    break;    
+              
+                      
+                case 6:
+                    // Encaminhar para exame
+                    System.out.println("Encaminhamento para exame ainda não implementado.");
+                    break;
+
+                case 7:
+                    // Encaminhar para receita
+                    System.out.println("Encaminhamento para receita ainda não implementado.");
+                    break;
+
+                case 8:
+                    // Sair
+                    System.out.println("Saindo...");
+                    scanner.close();
+                    return; // Encerra o programa
+                case 10:
+                     // Inserir medicamento e encaminhar para tratamento
                     System.out.print("Digite o nome do medicamento: ");
                     String nomeMedicamento = scanner.nextLine();
                     System.out.print("Digite a dosagem do medicamento: ");
@@ -135,39 +176,6 @@ public class PostoDeSaude {
                     Medicamento medicamento = new Medicamento(nomeMedicamento, dosagem, quantidade);
                     medicamentos.add(medicamento);
                     System.out.println("Medicamento criado: " + medicamento);
-
-                    // Encaminhar para tratamento
-                    System.out.print("Digite o número do SUS do paciente para encaminhar para tratamento: ");
-                    String pacienteNumero = scanner.nextLine();
-                    Paciente pacienteTratamento = encontrarPacientePorNumeroSus(pacienteNumero);
-                    if (pacienteTratamento != null) {
-                        Medico medicoTratamento = encontrarMedicoPorNome("Dr. João"); // Usando nome fixo para exemplo
-                        if (medicoTratamento != null) {
-                            medicoTratamento.encaminharParaTratamento(pacienteTratamento);
-                        } else {
-                            System.out.println("Médico não encontrado para encaminhamento.");
-                        }
-                    } else {
-                        System.out.println("Paciente não encontrado para encaminhamento.");
-                    }
-                    break;
-
-                case 5:
-                    // Encaminhar para exame
-                    System.out.println("Encaminhamento para exame ainda não implementado.");
-                    break;
-
-                case 6:
-                    // Encaminhar para receita
-                    System.out.println("Encaminhamento para receita ainda não implementado.");
-                    break;
-
-                case 7:
-                    // Sair
-                    System.out.println("Saindo...");
-                    scanner.close();
-                    return; // Encerra o programa
-
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
@@ -214,7 +222,15 @@ public class PostoDeSaude {
     public static void adicionarConsulta(Consulta consulta) {
         consultas.add(consulta);
     }
-
+    
+    public static Consulta encontrarConsultaPorPaciente(Paciente paciente) {
+    for (Consulta c : consultas) {
+        if (c.getPaciente().equals(paciente)) {
+            return c; // Retorna a primeira consulta encontrada
+        }
+    }
+    return null; // Retorna null se não encontrar nenhuma consulta
+}
 
     
 }

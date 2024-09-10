@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.postodesaude;
+
+import static com.mycompany.postodesaude.PostoDeSaude.encontrarPacientePorNumeroSus;
+import java.util.Date;
 import java.util.Scanner;
 /**
  *
@@ -28,15 +31,45 @@ public class Medico extends Pessoa{
      public String getCrm(){
          return crm;
      }
-      public void encaminharParaTratamento(Paciente paciente) {
+     public void realizarDiagnostico(Paciente paciente) {
+    // Exibir informações do paciente
+    System.out.println("Analisando o prontuário número " + paciente.getProntuario() + " do paciente " + paciente.getNome());
+
+    // Menu de ações do médico
+    System.out.println("O que o médico irá fazer?");
+    System.out.println("1 - Encaminhar para Tratamento");
+    System.out.println("2 - Encaminhar para Exame");
+    System.out.print("Escolha uma opção: ");
+    int escolha = scanner.nextInt();
+    scanner.nextLine();  // Consumir a nova linha
+
+    switch (escolha) {
+        case 1:
+            System.out.print("Digite o número do SUS do paciente para encaminhar para tratamento: ");
+            String pacienteNumero = scanner.nextLine();
+            Paciente pacienteTratamento = encontrarPacientePorNumeroSus(pacienteNumero);
+            if (pacienteTratamento != null) {
+                encaminharParaTratamento(pacienteTratamento);
+            } else {
+                System.out.println("Paciente não encontrado para tratamento.");
+            }
+            break;
+   
+        case 2:
+            System.out.println("Encaminhando paciente para exame.");
+            // Lógica para solicitar exame
+            solicitarExame();
+            break;
+        default:
+            System.out.println("Opção inválida.");
+    }
+}
+   public void encaminharParaTratamento(Paciente paciente) {
              System.out.println("Encaminhando paciente com prontuário " + paciente.getProntuario() + " para tratamento.");
              
-            
+
+              
       
-    
-              // Exemplos de medicamento
-       
-        while(true){
              System.out.println("----------------");
             System.out.println("Tratamento:");
             System.out.println("1-Encaminhar para Medicamento");
@@ -47,14 +80,23 @@ public class Medico extends Pessoa{
             scanner.nextLine(); 
             switch(escolha){
                 case 1:
-                  Medicamento medicamento = new Medicamento("Paracetamol", "500mg",1);
+                    Medicamento medicamento = new Medicamento("Paracetamol", "500mg",1);
                     encaminharParaMedicamento(paciente, medicamento);
         // Aplicar medicação (supondo que o enfermeiro é responsável por isso)
                     Enfermeiro enfermeiro = new Enfermeiro();
                     enfermeiro.setCoren("12345");
                     enfermeiro.aplicarMedicacao(paciente, medicamento);   
+                    break;
+                case 2:
+                    Enfermeiro enfermeira = new Enfermeiro();
+                    enfermeira.setCoren("12345");
+                    enfermeira.realizarInjecao(paciente);
+                    break;
+                         
             }
-        }
+            
+            
+        
             
             
     }
@@ -64,12 +106,22 @@ public class Medico extends Pessoa{
         farmaceutico.forneceMedicamentos(paciente, medicamento);
     }
 
-    public void realizarDiagnostico() {
-        // Lógica para realizar diagnóstico
-    }
+    
 
-    public void solicitarExame() {
-        // Lógica para solicitar exame
+    public void solicitarExame(Paciente paciente) {
+     
+   
+    System.out.println("Digite o nome do exame a ser solicitado:");
+    String nomeExame = scanner.nextLine();
+
+    System.out.println("Digite o tipo do exame:");
+    String tipoExame = scanner.nextLine();
+
+    // Exibir a confirmação da solicitação
+    System.out.println("Exame '" + nomeExame + "' do tipo '" + tipoExame + "' solicitado para o paciente " + paciente.getNome() + ".");
+    
+    // Apenas exibe a data de solicitação sem criar uma nova classe Exame ou armazenar os dados em listas
+    System.out.println("Data da solicitação: " + new Date());
     }
 
     public void prescreverReceita() {
