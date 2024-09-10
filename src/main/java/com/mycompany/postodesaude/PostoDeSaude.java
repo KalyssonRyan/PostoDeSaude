@@ -147,18 +147,25 @@ public class PostoDeSaude {
                         System.out.println("Paciente não encontrado para encaminhamento.");
                     }
                     break;
-                    
-               case 5:
+                 case 5:
                     System.out.println("Realizando diagnóstico");
                     System.out.print("Digite o Numero do SUS do Paciente para o diagnóstico: ");
                     String pacienteSus = scanner.nextLine();
                     Paciente pacienteDiagnostico = encontrarPacientePorNumeroSus(pacienteSus);
-                if (pacienteDiagnostico != null) {
-                    medico.realizarDiagnostico(pacienteDiagnostico);
-                } else {
-                    System.out.println("Paciente não encontrado.");
-                }
-                break;
+
+                    if (pacienteDiagnostico != null) {
+                        // Verifica se o paciente tem consulta agendada
+                        Consulta consultaPaciente = encontrarConsultaPorPaciente(pacienteDiagnostico);
+                        if (consultaPaciente != null) {
+                            medico.realizarDiagnostico(pacienteDiagnostico);
+                        } else {
+                            System.out.println("Paciente não tem consulta marcada. Diagnóstico não permitido.");
+                        }
+                    } else {
+                        System.out.println("Paciente não encontrado.");
+                    }
+                    break;    
+              
                       
                 case 6:
                     // Encaminhar para exame
