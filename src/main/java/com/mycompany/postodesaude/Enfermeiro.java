@@ -12,20 +12,20 @@ public class Enfermeiro extends Pessoa {
 
 	private String coren;
 
-	public void aplicarMedicacao(Paciente paciente) {
-
+	public void aplicarMedicacao(Paciente paciente,Medicamento medicamento) {
+            System.out.println("Enfermeiro com COREN " + coren + " aplica o medicamento " + medicamento + " no paciente com prontuário " + paciente.getProntuario() + ".");
 	}
 
 	public void realizarInjecao(Paciente paciente) {
-
+            System.out.println("Enfermeiro com COREN " + coren + " realizando injeção no paciente com prontuário " + paciente.getProntuario() + ".");
 	}
 
 	public String getCoren() {
-		return null;
+		return this.coren;
 	}
 
 	public void setCoren(String coren) {
-
+            this.coren=coren;
 	}
 
 }

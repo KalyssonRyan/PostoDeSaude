@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.postodesaude;
-
+import java.util.Scanner;
 /**
  *
  * @author Kalysson
@@ -11,6 +11,7 @@ package com.mycompany.postodesaude;
 public class Medico extends Pessoa{
      private String especialidade;
      private String crm;
+     Scanner scanner = new Scanner(System.in);
 
      public void setEspecialidade(String especialidade){
          this.especialidade = especialidade;
@@ -27,12 +28,40 @@ public class Medico extends Pessoa{
      public String getCrm(){
          return crm;
      }
-      public void encaminharParaTratamento() {
+      public void encaminharParaTratamento(Paciente paciente) {
+             System.out.println("Encaminhando paciente com prontuário " + paciente.getProntuario() + " para tratamento.");
+             
+            
       
+    
+              // Exemplos de medicamento
+       
+        while(true){
+             System.out.println("----------------");
+            System.out.println("Tratamento:");
+            System.out.println("1-Encaminhar para Medicamento");
+            System.out.println("2-Encaminhar para injeção");
+            System.out.print("Escolha uma opção: ");
+        
+            int escolha = scanner.nextInt();
+            scanner.nextLine(); 
+            switch(escolha){
+                case 1:
+                  Medicamento medicamento = new Medicamento("Paracetamol", "500mg",1);
+                    encaminharParaMedicamento(paciente, medicamento);
+        // Aplicar medicação (supondo que o enfermeiro é responsável por isso)
+                    Enfermeiro enfermeiro = new Enfermeiro();
+                    enfermeiro.setCoren("12345");
+                    enfermeiro.aplicarMedicacao(paciente, medicamento);   
+            }
+        }
+            
+            
     }
 
-    public void encaminharParaMedicamento() {
-        // Lógica para encaminhar para medicamento
+      public void encaminharParaMedicamento(Paciente paciente, Medicamento medicamento) {
+        Farmaceutico farmaceutico = new Farmaceutico(); 
+        farmaceutico.forneceMedicamentos(paciente, medicamento);
     }
 
     public void realizarDiagnostico() {
