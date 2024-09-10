@@ -12,12 +12,20 @@ public class Farmaceutico extends Pessoa {
 
 	private String crf;
 
-	public String getCrf() {
-		return null;
+	public Farmaceutico(String nome, String cpf, int idade, String telefone, String crf){
+		setNome(nome);
+		setCpf(cpf);
+		setIdade(idade);
+		setTelefone(telefone);
+		this.crf = crf;
 	}
 
 	public void setCrf(String crf) {
+		this.crf = crf;
+	}
 
+	public String getCpf(){
+		return crf;
 	}
 
 	public void atualizarEstoque() {

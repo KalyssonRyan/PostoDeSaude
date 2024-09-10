@@ -44,14 +44,13 @@ public class Paciente extends Pessoa{
 
     //Terminar a implementação dessa classe, quando houver uma classe farmacêutico.
     public void retirarMedicamentos(){
+        //Retorna o nome do farmacêutico
         System.out.println("Medicamento retirado com sucesso.");
     }
 
     public void tomarMedicacao(){
-        System.out.println("medicação tomada com enfermeiro.");
+        System.out.println("Medicação tomada com enfermeiro.");
     }
-
-
 
     public void setNumeroSus(String numeroSus) {
         this.numeroSus = numeroSus;
