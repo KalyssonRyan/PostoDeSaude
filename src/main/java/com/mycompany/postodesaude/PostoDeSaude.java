@@ -46,11 +46,7 @@ public class PostoDeSaude {
             System.out.println("2 - Agendar consulta");
             System.out.println("3 - Cancelar consulta");
             System.out.println("-------Medico-------");
-            System.out.println("5 - Realizer Dignostico da consulta");
-            System.out.println("6 - Solicitar Exame");
-            System.out.println("7 - Prescrever Receita");
-            System.out.println("8 - Encaminhar para exame");
-            System.out.println("9 - Encaminhar para receita");
+            System.out.println("4 - Realizer Dignostico da consulta");
             System.out.println("10-Inserir medicamento e ");
             System.out.println("11 - Sair");
             System.out.print("Escolha uma opção: ");
@@ -147,17 +143,11 @@ public class PostoDeSaude {
                     break;    
               
                       
-                case 6:
-                    // Encaminhar para exame
-                    System.out.println("Encaminhamento para exame ainda não implementado.");
-                    break;
+            
 
-                case 7:
-                    // Encaminhar para receita
-                    System.out.println("Encaminhamento para receita ainda não implementado.");
-                    break;
+              
 
-                case 8:
+                case 11:
                     // Sair
                     System.out.println("Saindo...");
                     scanner.close();
