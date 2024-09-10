@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.postodesaude;
+
+import static com.mycompany.postodesaude.PostoDeSaude.encontrarPacientePorNumeroSus;
 import java.util.Scanner;
 /**
  *
@@ -27,14 +29,45 @@ public class Medico extends Pessoa{
 
      public String getCrm(){
          return crm;
-     }
+     }public void realizarDiagnostico(Paciente paciente) {
+    // Exibir informações do paciente
+    System.out.println("Analisando o prontuário número " + paciente.getProntuario() + " do paciente " + paciente.getNome());
+
+    // Menu de ações do médico
+    System.out.println("O que o médico irá fazer?");
+    System.out.println("1 - Encaminhar para Tratamento");
+    System.out.println("2 - Encaminhar para Exame");
+    System.out.print("Escolha uma opção: ");
+    int escolha = scanner.nextInt();
+    scanner.nextLine();  // Consumir a nova linha
+
+    switch (escolha) {
+        case 1:
+            System.out.print("Digite o número do SUS do paciente para encaminhar para tratamento: ");
+            String pacienteNumero = scanner.nextLine();
+            Paciente pacienteTratamento = encontrarPacientePorNumeroSus(pacienteNumero);
+            if (pacienteTratamento != null) {
+                encaminharParaTratamento(pacienteTratamento);
+            } else {
+                System.out.println("Paciente não encontrado para tratamento.");
+            }
+            break;
+   
+        case 2:
+            System.out.println("Encaminhando paciente para exame.");
+            // Lógica para solicitar exame
+            solicitarExame();
+            break;
+        default:
+            System.out.println("Opção inválida.");
+    }
+}
       public void encaminharParaTratamento(Paciente paciente) {
              System.out.println("Encaminhando paciente com prontuário " + paciente.getProntuario() + " para tratamento.");
              
 
-              // Exemplos de medicamento
-       
-        while(true){
+              
+      
              System.out.println("----------------");
             System.out.println("Tratamento:");
             System.out.println("1-Encaminhar para Medicamento");
@@ -58,7 +91,7 @@ public class Medico extends Pessoa{
             }
             
             
-        }
+        
             
             
     }
@@ -68,10 +101,7 @@ public class Medico extends Pessoa{
         farmaceutico.forneceMedicamentos(paciente, medicamento);
     }
 
-    public void realizarDiagnostico(Paciente paciente) {
-        // Lógica para realizar diagnóstico
-        System.out.println("Analisando o Prontuario numero "+ paciente.getProntuario()+" do paciente "+paciente.getNome());
-    }
+    
 
     public void solicitarExame() {
         // Lógica para solicitar exame
