@@ -5,6 +5,7 @@
 package com.mycompany.postodesaude;
 
 import static com.mycompany.postodesaude.PostoDeSaude.encontrarPacientePorNumeroSus;
+import java.util.Date;
 import java.util.Scanner;
 /**
  *
@@ -107,8 +108,20 @@ public class Medico extends Pessoa{
 
     
 
-    public void solicitarExame() {
-        // Lógica para solicitar exame
+    public void solicitarExame(Paciente paciente) {
+     
+   
+    System.out.println("Digite o nome do exame a ser solicitado:");
+    String nomeExame = scanner.nextLine();
+
+    System.out.println("Digite o tipo do exame:");
+    String tipoExame = scanner.nextLine();
+
+    // Exibir a confirmação da solicitação
+    System.out.println("Exame '" + nomeExame + "' do tipo '" + tipoExame + "' solicitado para o paciente " + paciente.getNome() + ".");
+    
+    // Apenas exibe a data de solicitação sem criar uma nova classe Exame ou armazenar os dados em listas
+    System.out.println("Data da solicitação: " + new Date());
     }
 
     public void prescreverReceita() {
