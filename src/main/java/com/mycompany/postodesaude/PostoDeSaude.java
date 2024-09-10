@@ -235,7 +235,15 @@ public class PostoDeSaude {
     public static void adicionarConsulta(Consulta consulta) {
         consultas.add(consulta);
     }
-
+    
+    public static Consulta encontrarConsultaPorPaciente(Paciente paciente) {
+    for (Consulta c : consultas) {
+        if (c.getPaciente().equals(paciente)) {
+            return c; // Retorna a primeira consulta encontrada
+        }
+    }
+    return null; // Retorna null se não encontrar nenhuma consulta
+}
 
     
 }
