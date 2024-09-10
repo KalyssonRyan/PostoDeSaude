@@ -9,35 +9,40 @@ package com.mycompany.postodesaude;
  * @author Kalysson
  */
 public class Medicamento {
+    private String nomeMedicamento;
+    private String dosagem;
+    private int quantidade;
 
-	private String nomeMedicamento;
-
-	private String dosagem;
-
-	private int quantidade;
+    public Medicamento(String nomeMedicamento, String dosagem, int quantidade) {
+        this.nomeMedicamento = nomeMedicamento;
+        this.dosagem = dosagem;
+        this.quantidade = quantidade;
+    }
+    public Medicamento() {
+    }
 
 	public String getNomeMedicamento() {
-		return null;
-	}
+        return nomeMedicamento;
+    }
 
-	public void setNomeMedicamento(String nomeMedicamento) {
+    public void setNomeMedicamento(String nomeMedicamento) {
+        this.nomeMedicamento = nomeMedicamento;
+    }
 
-	}
+    public String getDosagem() {
+        return dosagem;
+    }
 
-	public String getDosagem() {
-		return null;
-	}
+    public void setDosagem(String dosagem) {
+        this.dosagem = dosagem;
+    }
 
-	public void setDosagem(String dosagem) {
+    public int getQuantidade() {
+        return quantidade;
+    }
 
-	}
-
-	public int getQuantidade() {
-		return 0;
-	}
-
-	public void setQuantidade(int quantidade) {
-
-	}
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
 }
